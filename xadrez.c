@@ -29,6 +29,25 @@ int main() {
         printf("Esquerda\n");
         k++;
     } while (k < MOV_RAINHA);
+
+    //Movimentação do Cavalo - 2 casas para baixo e 1 casa para esquerda
+    printf("\nMovimentação do Cavalo:\n");
+
+     // Loop externo para mover 2 casas para baixo
+     for (int i = 0; i < 2; i++) {
+        printf("Baixo\n");
+
+        // Loop interno para mover 1 casa para a esquerda (apenas na última iteração)
+        int contador = 1;
+        while (contador > 0) {
+            if (i == 1) { // Só move para a esquerda depois da segunda descida
+                printf("Esquerda\n");
+            }
+            contador--;
+        }
+    }
+
+    printf("\n");
     
     return 0;
 }
