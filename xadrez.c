@@ -1,20 +1,20 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código simula a movimentação de peças de xadrez utilizando estruturas de repetição.
-
 #define MOV_BISPO 5
 #define MOV_TORRE 5
 #define MOV_RAINHA 8
 
+// Função recursiva para movimentação do Bispo
+void moverBispo(int movimentos) {
+    if (movimentos == 0) return;
+    printf("Diagonal Superior Direita\n");
+    moverBispo(movimentos - 1);
+}
+
 int main() {
-    // Movimentação do Bispo - 5 casas na diagonal superior direita
+    // Movimentação do Bispo - 5 casas na diagonal superior direita (Recursão)
     printf("Movimentação do Bispo:\n");
-    int i = 0;
-    while (i < MOV_BISPO) {
-        printf("Diagonal Superior Direita\n");
-        i++;
-    }
+    moverBispo(MOV_BISPO);
     
     // Movimentação da Torre - 5 casas para a direita
     printf("\nMovimentação da Torre:\n");
@@ -30,24 +30,18 @@ int main() {
         k++;
     } while (k < MOV_RAINHA);
 
-    //Movimentação do Cavalo - 2 casas para baixo e 1 casa para esquerda
+    // Movimentação do Cavalo - 1 vez em "L" para cima e para a direita
     printf("\nMovimentação do Cavalo:\n");
-
-     // Loop externo para mover 2 casas para baixo
-     for (int i = 0; i < 2; i++) {
-        printf("Baixo\n");
-
-        // Loop interno para mover 1 casa para a esquerda (apenas na última iteração)
-        int contador = 1;
-        while (contador > 0) {
-            if (i == 1) { // Só move para a esquerda depois da segunda descida
-                printf("Esquerda\n");
-            }
-            contador--;
+    for (int x = 0, y = 0; x < 2 || y < 1; x++) {
+        if (x < 2) {
+            printf("Cima\n");
+        }
+        if (x == 1 && y < 1) {
+            printf("Direita\n");
+            break; // Sai do loop assim que a movimentação do "L" for concluída
         }
     }
 
     printf("\n");
-    
     return 0;
 }
